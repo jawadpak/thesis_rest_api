@@ -55,7 +55,7 @@ class UserPlanMealsTable extends Table {
 							'MealItemNutrients' => function ($q) {
 								return $q->autoFields(false)
 									->select([
-										'id', 'P203', 'P204', 'P205']);
+										'id', 'P203', 'P204', 'P205', 'P208', 'P255', 'P303']);
 							},
 							'ChildItems' => function ($q) {
 								return $q->autoFields(false)
