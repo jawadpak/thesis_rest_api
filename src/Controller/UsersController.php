@@ -14,6 +14,7 @@
  */
 
 namespace App\Controller;
+
 use Cake\ORM\TableRegistry;
 
 /**
@@ -34,6 +35,8 @@ class UsersController extends AppController {
 		$this->message = "";
 		$this->UserPlans = TableRegistry::get('UserPlans');
 		$this->UserPlanMeals = TableRegistry::get('UserPlanMeals');
+		$this->Recipes = TableRegistry::get('Recipes');
+
 	}
 
 	public function index() {
@@ -101,14 +104,27 @@ class UsersController extends AppController {
 			'_serialize' => ['message', 'status', 'user_meal_plan'],
 		]);
 		/*$a = array(
-				0 => array('Person' => array('name' => 'Jeff'), 'Friend' => array(array('name' => 'Nate'))),
-				1 => array('Person' => array('name' => 'Tracy'), 'Friend' => array(array('name' => 'Lindsay'))),
-				2 => array('Person' => array('name' => 'Adam'), 'Friend' => array(array('name' => 'Bob'))),
-			);
-			$this->set([
-				'recipes' => $a,
-				'_serialize' => ['recipes'],
+			    0 => array('Person' => array('name' => 'Jeff'), 'Friend' => array(array('name' => 'Nate'))),
+			    1 => array('Person' => array('name' => 'Tracy'), 'Friend' => array(array('name' => 'Lindsay'))),
+			    2 => array('Person' => array('name' => 'Adam'), 'Friend' => array(array('name' => 'Bob'))),
+			    );
+			    $this->set([
+			    'recipes' => $a,
+			    '_serialize' => ['recipes'],
 		*/
+	}
+
+	public function getRecipe() {
+
+		$recipes = $this->Recipes->find('all')
+			->contain(["RecipeNutrients", 'RecipeItems'])
+			->limit(10);
+
+		$this->set([
+			'message' => "dsdsdds",
+			'recipes' => $recipes,
+			'_serialize' => ['message', 'recipes'],
+		]);
 	}
 
 }

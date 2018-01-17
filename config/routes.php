@@ -53,6 +53,10 @@ Router::scope('/api', function ($routes) {
 				'action' => 'dailyPlan',
 				'method' => 'POST',
 			],
+			'getRecipeData' => [
+				'action' => 'getRecipe',
+				'method' => 'GET',
+			],
 		],
 	]);
 });

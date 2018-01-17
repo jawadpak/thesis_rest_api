@@ -7,7 +7,6 @@ class MealItemsTable extends Table {
 
 	public function initialize(array $config) {
 		$this->addBehavior('Uuid');
-
 		/*$this->hasMany('FoodItems', [
 			'foreignKey' => 'food_item_id',
 			'className' => 'food_items',
@@ -26,6 +25,12 @@ class MealItemsTable extends Table {
 			'foreignKey' => 'parent_id',
 			'className' => 'meal_items',
 
+		]);
+
+		// Model/Table/CommentsTable.php
+		$this->belongsTo('ChildItems.ChildMealItemNutrients', [
+			'foreignKey' => 'meal_item_id',
+			'className' => 'meal_item_nutrients',
 		]);
 
 	}
